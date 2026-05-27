@@ -1,0 +1,36 @@
+namespace TemplatePattern{
+	public abstract class recipe{
+		protected abstract void brew();
+		protected abstract void addCondiments();
+		private void boilWater()
+		{
+			Console.WriteLine("Boiling Water...");
+		}
+		private void pourIntoCup()
+		{
+			Console.WriteLine("Pouring into Cup...");
+		}
+		protected virtual bool wantCondiments()
+		{
+			return true;
+		}
+		public void prepare()
+		{
+			boilWater();
+			brew();
+			if(wantCondiments) addCondiments();
+			pourIntoCup();
+		}
+	}
+	public class makeTea:recipe{
+		public void override brew()
+		{
+			Console.WriteLine("Making Tea");
+		}
+		public void override addCondiments()
+		{
+			Console.WriteLine("Adding Condiments");
+		}
+		public bool wantCondiments()=> return false; 
+	}
+}
